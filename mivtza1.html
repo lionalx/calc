@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title> מחשבון מבצעים </title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+		<link href="styles/main.css" type="text/css" rel="stylesheet">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type='text/javascript' src='scripts/respond.min.js'></script>
+	</head>
+	<body>
+		
+		<div id="wrapper">
+		
+			<header>
+							
+				<h1>מחשבון מבצעים</h1>
+				
+				<nav>
+					<ul>
+						<li><a href="index.html" title="Home">ראשי</a></li>
+						<li><a href="about.html" title="About">אודות</a></li>
+					</ul>
+				</nav>
+				
+				<div id="button">
+					<img src="images/oldprice-newprice-button.png" alt="מחיר ישן - מחיר חדש" />
+				</div>
+			</header>	
+		
+			<section id="main">
+				<h1>הנתונים</h1>
+				<p><label> מחיר חדש:</label> <input type="text" id="new_price" /><br />
+				<label> מחיר ישן:</label> <input type="text" id="old_price" /><br />
+				<button id="calc">חשב!</button><br /></p>
+				<h1>התוצאה</h1>
+				<p id="result">תחילה מלאו את הפרטים</p>
+				
+				<script type="text/javascript" >
+					$(document).ready(function(){
+						$("#calc").click(function(){
+							var nprice = 0;
+							nprice = $("#new_price").val();
+							var oprice = 0;
+							oprice = $("#old_price").val();
+							var gap = 0;
+							var per = 0;
+							if(oprice > nprice) {
+								gap = oprice-nprice;
+								per = 100/oprice*gap;
+								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להנחה של "+per.toFixed(2)+"%.");
+							} 
+							if(nprice > oprice) {
+								gap = nprice-oprice;
+								per = 100/oprice*gap;
+								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להתייקרות של "+per.toFixed(2)+"%.");
+							} 
+							if (oprice == nprice) {
+							$("#result").text("המחירים זהים!");
+							}
+						});
+					});
+				</script>
+			</section>
+		
+			<aside>
+				<h1>שיקולים נוספים</h1>
+				<p>כאן יופיעו שיקולים נוספים בנוגע למבצע.ת קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לורם איפסום דולור סיט אמט, הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.</p>
+			</aside>
+	
+		</div>
+
+	</body>
+</html>
