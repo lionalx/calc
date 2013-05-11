@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" href="css/style.css">
+  <title>מחשבון מבצעים</title>  
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="jquery.flexslider-min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="header clearfix">
+      <div class="logo">מחשבון מבצעים</div>
+
+      <nav class="menu_main">
+        <ul>
+          <li class="active"><a href="#">המחשבון</a></li>
+          <li><a href="#">אודות</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+    <div class="info">
+      <article class="hero clearfix">
+        <div class="col_100">
+          <h1>מחשבון מבצעים</h1>
+          <p>תוכנה קטנה זו תסייע לך להחליט אם מבצע כלשהו משתלם או לא משתלם.</p>
+        </div>
+      </article>
+
+
+      <article class="article clearfix">
+        <div class="col_33">
+          <h2>מחיר חדש מחיר ישן</h2>
+          <label> מחיר חדש:</label>
+									<input type="text" id="new_price" /><br />
+									<label> מחיר ישן:</label>
+									<input type="text" id="old_price" /><br />
+									<button id="calc">?</button>
+									<p id="result"> </p>
+									<script type="text/javascript" >
+												$(document).ready(function(){
+												  $("#calc").click(function(){
+      var nprice = $("#new_price").val();
+      var oprice = $("#old_price").val();
+      var gap = 0;
+      var per = 0;
+      if(oprice>nprice) {
+          gap = oprice-nprice;
+          per = 100/oprice*gap;
+          $("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להנחה של "+per.toFixed(2)+"%.");
+      } 
+      else if(nprice>oprice) {
+          gap = nprice-oprice;
+          per = 100/nprice*gap;
+          $("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להתייקרות של "+per.toFixed(2)+"%.");
+      }
+      else {
+          $("#result").text("המחירים זהים!");
+      }
+  });
+});
+</script>
+        </div>
+    </div>
+        
+    <footer class="footer clearfix">
+      <div class="copyright">מחשבון מבצעים</div>
+
+      <nav class="menu_bottom">
+        <ul>
+          <li class="active"><a href="#">המחשבון</a></li>
+          <li><a href="#">אודות</a></li>
+        </ul>
+      </nav>
+    </footer>
+
+  </div>
+</body>
+</html>
