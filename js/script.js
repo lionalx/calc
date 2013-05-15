@@ -1,9 +1,23 @@
 $(document).ready(function(){
-  $("#calc").click(function(){
-      var nprice = $("#new_price").val();
-      var oprice = $("#old_price").val();
+
+  $("#form").validate({
+     rules: {
+      old_price: {
+        required: true,
+        digits: true
+      },
+      new_price: {
+        required: true,
+        digits: true
+      }
+    },
+    submitHandler: function(form) {
+
+      var nprice = parseInt($("#new_price").val());
+      var oprice = parseInt($("#old_price").val());
       var gap = 0;
       var per = 0;
+
       if(oprice>nprice) {
           gap = oprice-nprice;
           per = 100/oprice*gap;
@@ -17,5 +31,14 @@ $(document).ready(function(){
       else {
           $("#result").text("המחירים זהים!");
       }
-  });
+
+    }
+    });
+
+    $.extend(jQuery.validator.messages, {
+      required: "שדות חובה",
+      digits: "רק ספרות!!",
+      minlength: jQuery.validator.format("")
+    });
 });
+
