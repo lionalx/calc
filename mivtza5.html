@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title> מחשבון מבצעים - מחיר ישן, מחיר חדש</title>
+		<title> מחשבון מבצעים - שלוש בעשר</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 		<link href="styles/main.css" type="text/css" rel="stylesheet">
 		<!--[if lt IE 9]>
@@ -28,14 +28,15 @@
 				</nav>
 				
 				<div id="button">
-					<img src="images/oldprice-newprice-button.png" alt="מחיר ישן - מחיר חדש" />
+					<img src="images/3for10button.png" alt="שלוש בעשר" />
 				</div>
 			</header>	
 		
 			<section id="main">
 				<h1>הנתונים</h1>
-				<p><label> מחיר חדש:</label> <input type="number" id="new_price" /><br />
-				<label> מחיר ישן:</label> <input type="number" id="old_price" /><br />
+				<p><label>כמה פריטים יש במבצע?</label><br /><input type="number" id="how_much" /><br />
+				<label>בכמה כסף סך הכל?</label><br /><input type="number" id="for_much" /><br />
+				<label>מה היה המחיר לפריט לפני ההנחה?</label><br /><input type="number" id="orig_price" /><br />
 				<button id="calc">חשב!</button><br /></p>
 				<h1>התוצאה</h1>
 				<p id="result">תחילה מלאו את הפרטים</p>
@@ -43,23 +44,13 @@
 				<script type="text/javascript" >
 					$(document).ready(function(){
 						$("#calc").click(function(){
-							var nprice = parseFloat($("#new_price").val());
-							var oprice = parseFloat($("#old_price").val());
-							var gap = 0;
-							var per = 0;
-							if(oprice > nprice) {
-								gap = oprice-nprice;
-								per = 100/oprice*gap;
-								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להנחה של "+per.toFixed(2)+"%.");
-							} 
-							if(nprice > oprice) {
-								gap = nprice-oprice;
-								per = 100/oprice*gap;
-								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להתייקרות של "+per.toFixed(2)+"%.");
-							} 
-							if (oprice == nprice) {
-							$("#result").text("המחירים זהים!");
-							}
+							var how_much = parseFloat($("#how_much").val());
+							var for_much = parseFloat($("#for_much").val());
+							var orig_price = parseFloat($("#orig_price").val());
+							var single_price = for_much / how_much;
+							var single_gain = orig_price - single_price;
+							var total_gain = single_gain * how_much;
+							$("#result").text("מחיר לכל פריט הוא "+single_price.toFixed(2)+", הרווח לפריט הוא "+single_gain.toFixed(2)+", סך הכל הרווחת "+total_gain.toFixed(2));
 						});
 					});
 				</script>

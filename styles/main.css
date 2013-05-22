@@ -43,11 +43,11 @@ a.active {
 
 /* Logo H1 */
 header h1 {
-	height: 70px;
-	width: 164px;
-	float: right;
+	height: 170px;
+	width: 250px;
+	float: center;
 	display: block;
-	background: url(../images/logo.png) 0 0 no-repeat;
+	background: url(../images/newlogo.png) 0 0 no-repeat;
 	text-indent: -9999px;
 	}
 		

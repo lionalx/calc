@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title> מחשבון מבצעים - מחיר ישן, מחיר חדש</title>
+		<title> מחשבון מבצעים - אחד פלוס אחד</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 		<link href="styles/main.css" type="text/css" rel="stylesheet">
 		<!--[if lt IE 9]>
@@ -28,14 +28,14 @@
 				</nav>
 				
 				<div id="button">
-					<img src="images/oldprice-newprice-button.png" alt="מחיר ישן - מחיר חדש" />
+					<img src="images/1plus1-button.png" alt="אחד פלוס אחד" />
 				</div>
 			</header>	
 		
 			<section id="main">
 				<h1>הנתונים</h1>
-				<p><label> מחיר חדש:</label> <input type="number" id="new_price" /><br />
-				<label> מחיר ישן:</label> <input type="number" id="old_price" /><br />
+				<p><label> מה מספר הפריטים שעליהם אתה משלם?</label><br /><input type="number" id="paid_items" /><br />
+				<label>מה המחיר של כל פריט? </label><br /><input type="number" id="price_of_one" /><br />
 				<button id="calc">חשב!</button><br /></p>
 				<h1>התוצאה</h1>
 				<p id="result">תחילה מלאו את הפרטים</p>
@@ -43,23 +43,11 @@
 				<script type="text/javascript" >
 					$(document).ready(function(){
 						$("#calc").click(function(){
-							var nprice = parseFloat($("#new_price").val());
-							var oprice = parseFloat($("#old_price").val());
-							var gap = 0;
-							var per = 0;
-							if(oprice > nprice) {
-								gap = oprice-nprice;
-								per = 100/oprice*gap;
-								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להנחה של "+per.toFixed(2)+"%.");
-							} 
-							if(nprice > oprice) {
-								gap = nprice-oprice;
-								per = 100/oprice*gap;
-								$("#result").text("הפער הוא "+gap.toFixed(2)+" שח, שווה ערך להתייקרות של "+per.toFixed(2)+"%.");
-							} 
-							if (oprice == nprice) {
-							$("#result").text("המחירים זהים!");
-							}
+							var paidfor = parseFloat($("#paid_items").val());
+							var singleprice = parseFloat($("#price_of_one").val());
+							var total = paidfor*singleprice;
+							var realprice = total/(paidfor+1);
+							$("#result").text("מחיר פריט בודד :"+realprice.toFixed(2));
 						});
 					});
 				</script>
