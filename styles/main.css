@@ -25,26 +25,29 @@ a.active {
 /* Structure */
 #wrapper {
 	width: 96%;	
-	max-width: 920px;
+	max-width: 300px;
 	margin: auto;
 	padding: 2%;
 	} 
 
 	#main {
-		width: 60%;
-		margin-left: 5%;
+		width: 100%;
+		margin: 0 0 10px; 
 		float: right;
+		clear: right;
 		}		
 		
 	aside {
-		width: 35%;
-		float: left;
+		width: 100%;
+		float: right;
+		margin: 0 0 10px; 
+		clear: right;
 		}
 
 /* Logo H1 */
 header h1 {
 	height: 170px;
-	width: 250px;
+	width: 300px;
 	float: center;
 	display: block;
 	background: url(../images/newlogo.png) 0 0 no-repeat;
@@ -53,17 +56,26 @@ header h1 {
 		
 /* Nav */
 header nav {
-	float: left;
-	margin-top: 40px; 
+	float: right;
+	clear: right;
+	margin: 0, 0, 10px; 
+	width: 100%;
 	}
 	
 	header nav li {
-		display: inline;
-		margin-right: 15px;
+		margin: 0;
+		background: #efefef;
+		display: block;
+		margin-bottom: 3px;
 		}
+		header nav a {
+			display: block;
+			padding: 10px;
+			text-align: center;
+			}	
 
 #skipTo {
-	display: none;
+	display: block;
 	}
 	#skipTo li {
 		background: #b1fffc;
@@ -79,30 +91,4 @@ header nav {
 	#button img {
 		width: 100%;
 		}
-
-
-/* Media Queries */
-@media screen and (max-width: 480px) {
-
-	#skipTo {
-		display: block;
-		}
-	
-	header nav, #main, aside {
-		float: right;
-		clear: right;
-		margin: 0 0 10px; 
-		width: 100%;
-		}	
-		header nav li {
-			margin: 0;
-			background: #efefef;
-			display: block;
-			margin-bottom: 3px;
-			}
-			header nav a {
-				display: block;
-				padding: 10px;
-				text-align: center;
-				}			
 }
